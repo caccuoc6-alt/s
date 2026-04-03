@@ -376,3 +376,25 @@ form.addEventListener("submit", (e) => {
 // Initialize state.
 setPasswordVisibility(false);
 
+.then(({ ok, data }) => {
+  if (!ok) {
+    setFormMessage("error", data?.message || "Login failed.");
+    return;
+  }
+
+  // ---- Step 2: Save login info ----
+  if (data.token) {
+    localStorage.setItem("auth_token", data.token); // Save token
+  }
+
+  if (data.user) {
+    localStorage.setItem("user", JSON.stringify(data.user)); // Save user info
+  }
+
+  setFormMessage("success", "Login successful!");
+
+  // Optional: redirect to dashboard
+  setTimeout(() => {
+    window.location.href = "./dashboard.html";
+  }, 700);
+});
