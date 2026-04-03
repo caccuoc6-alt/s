@@ -132,7 +132,7 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const API_BASE = "http://localhost:8080";
+  const API_BASE = "https://s-wq79.onrender.com";
 
   const btn = form.querySelector('button[type="submit"]');
   const original = btn.textContent;
